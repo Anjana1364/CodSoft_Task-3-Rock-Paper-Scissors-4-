@@ -1,0 +1,39 @@
+import random
+
+def scoretracker(userchoice, compchoice):
+    if userchoice == compchoice:
+        return "It's a tie!"
+    if (userchoice == 'rock' and compchoice == 'scissors') or \
+       (userchoice == 'paper' and compchoice == 'rock') or \
+       (userchoice == 'scissors' and compchoice == 'paper'):
+        return "You win!"
+    else:
+        return "Computer wins!"
+
+def game():
+    userscore = 0
+    compscore = 0
+    print("Welcome to Rock, Paper, Scissors!") 
+    while True:
+        print("\nChoose: rock, paper, or scissors.")
+        userchoice = input("Your choice: ").lower()
+        if userchoice not in ['rock', 'paper', 'scissors']:
+            print("Invalid choice. Please choose rock, paper, or scissors.")
+            continue
+        compchoice = random.choice(['rock', 'paper', 'scissors'])
+        print("\nYour choice:",userchoice)
+        print("Computer's choice:",compchoice)  
+        result = scoretracker(userchoice, compchoice)
+        print(result)
+        if result == "You win!":
+            userscore += 1
+        elif result == "Computer wins!":
+            compscore += 1
+        print("Your score:", userscore)
+        print("Computer score:",compscore)
+        play_again = input("\nDo you want to play again? (yes/no): ").lower()
+        if play_again != 'yes':
+            print("Thanks for playing!")
+            break
+
+game()
